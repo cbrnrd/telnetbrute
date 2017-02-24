@@ -1,4 +1,4 @@
 import sys
-inp = sys.argv[1]
+inp = sys.argv[1:]
 
 print inp.encode("hex")
